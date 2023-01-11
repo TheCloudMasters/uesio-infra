@@ -1,0 +1,31 @@
+name: Master Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy-dev:
+    name: Deploy to AWS - Dev
+    runs-on: "ubuntu-latest"
+    environment: "dev"
+    uses: ./.github/workflows/deploy-aws.yml
+    with:
+      environment: dev
+  deploy-uat:
+    name: Deploy to AWS - UAT
+    runs-on: "ubuntu-latest"
+    environment: "uat"
+    needs: [deploy-dev]
+    uses: ./.github/workflows/deploy-aws.yml
+    with:
+      environment: uat
+  deploy-prod:
+    name: Deploy to AWS - Prod
+    runs-on: "ubuntu-latest"
+    environment: "prod"
+    needs: [deploy-dev, deploy-uat]
+    uses: ./.github/workflows/deploy-aws.yml
+    with:
+      environment: prod
