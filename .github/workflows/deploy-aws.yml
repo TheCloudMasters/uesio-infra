@@ -2,16 +2,17 @@ name: Deploy to AWS
 
 on:
   workflow_call:
-    inputs:
-      environment:
-        description: "Environment"
+    secrets:
+      AWS_ACCESS_KEY_ID:
         required: true
-        default: "dev"
-        type: choice
-        options:
-          - dev
-          - uat
-          - prod
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+      AWS_REGION:
+        required: true
+      ECS_CLUSTER:
+        required: true
+      ECS_SERVICE:
+        required: true
 
 jobs:
   deploy:
@@ -42,6 +43,6 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@de0132cf8cdedb79975c6d42b77eb7ea193cf28e
         with:
           task-definition: ./aws/${{ inputs.environment }}/ecr/task_definitions/uesio_web.json
-          service: ${{ env.ECS_SERVICE }}
-          cluster: ${{ env.ECS_CLUSTER }}
+          service: ${{ secrets.ECS_SERVICE }}
+          cluster: ${{ secrets.ECS_CLUSTER }}
           wait-for-service-stability: true

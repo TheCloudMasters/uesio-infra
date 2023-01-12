@@ -1,0 +1,21 @@
+name: Manual Deploy to AWS
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Deployment Environment"
+        required: true
+        default: "dev"
+        type: choice
+        options:
+          - dev
+          - uat
+          - prod
+
+jobs:
+  deploy:
+    name: Deploy to AWS - ${{ inputs.environment }}
+    environment: ${{ inputs.environment }}
+    uses: ./.github/workflows/deploy-aws.yml
+    secrets: inherit

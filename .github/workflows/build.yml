@@ -8,9 +8,10 @@ on:
 jobs:
   deploy-dev:
     name: Deploy to AWS - Dev
+    environment: dev
     uses: ./.github/workflows/deploy-aws.yml
-    with:
-      environment: dev
+    secrets: inherit
+
   # deploy-uat:
   #   name: Deploy to AWS - UAT
   #   runs-on: "ubuntu-latest"
