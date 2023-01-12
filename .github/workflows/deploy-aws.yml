@@ -8,19 +8,14 @@ on:
         required: true
     secrets:
       AWS_ACCESS_KEY_ID:
-        type: string
         required: true
       AWS_SECRET_ACCESS_KEY:
-        type: string
         required: true
       AWS_REGION:
-        type: string
         required: true
       ECS_CLUSTER:
-        type: string
         required: true
       ECS_SERVICE:
-        type: string
         required: true
 
 jobs:
