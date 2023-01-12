@@ -17,8 +17,6 @@ on:
         required: true
       ECS_SERVICE:
         required: true
-      ACTIONS_STEP_DEBUG:
-        required: false
 
 jobs:
   deploy:
