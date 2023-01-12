@@ -8,8 +8,6 @@ on:
 jobs:
   deploy-dev:
     name: Deploy to AWS - Dev
-    runs-on: "ubuntu-latest"
-    environment: "dev"
     uses: ./.github/workflows/deploy-aws.yml
     with:
       environment: dev
