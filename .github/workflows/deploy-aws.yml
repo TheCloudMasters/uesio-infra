@@ -2,6 +2,9 @@ name: Deploy to AWS
 
 on:
   workflow_call:
+    inputs:
+      environment:
+        required: true
     secrets:
       AWS_ACCESS_KEY_ID:
         required: true
