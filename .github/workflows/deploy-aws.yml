@@ -1,18 +1,17 @@
 name: Deploy to AWS
 
-inputs:
-  environment:
-    description: "Environment"
-    required: true
-    default: "dev"
-    type: choice
-    options:
-      - dev
-      - uat
-      - prod
-
 on:
   workflow_call:
+    inputs:
+      environment:
+        description: "Environment"
+        required: true
+        default: "dev"
+        type: choice
+        options:
+          - dev
+          - uat
+          - prod
 
 jobs:
   deploy:
