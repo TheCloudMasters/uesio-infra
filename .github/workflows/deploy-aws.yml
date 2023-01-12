@@ -12,7 +12,7 @@ inputs:
       - prod
 
 on:
-  workflow_dispatch:
+  workflow_call:
 
 jobs:
   deploy:
