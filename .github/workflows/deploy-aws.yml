@@ -4,24 +4,24 @@ on:
   workflow_call:
     inputs:
       environment:
-        required: true
         type: string
+        required: true
     secrets:
       AWS_ACCESS_KEY_ID:
-        required: true
         type: string
+        required: true
       AWS_SECRET_ACCESS_KEY:
-        required: true
         type: string
+        required: true
       AWS_REGION:
-        required: true
         type: string
+        required: true
       ECS_CLUSTER:
-        required: true
         type: string
+        required: true
       ECS_SERVICE:
-        required: true
         type: string
+        required: true
 
 jobs:
   deploy:
