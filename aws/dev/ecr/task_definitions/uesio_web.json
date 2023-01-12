@@ -111,6 +111,16 @@
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "uesio"
                 }
+            },
+            "healthCheck": {
+                "retries": 3,
+                "command": [
+                    "CMD-SHELL",
+                    "curl -f http://localhost:3000/health || exit 1"
+                ],
+                "timeout": 5,
+                "interval": 30,
+                "startPeriod": 5
             }
         }
     ],
