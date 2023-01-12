@@ -46,10 +46,10 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@de0132cf8cdedb79975c6d42b77eb7ea193cf28e
         with:
           codedeploy-appspec: ./aws/${{ inputs.environment }}/ecr/task_definitions/appspec.yaml
-          codedeploy-application: uesio-app
+          codedeploy-application: uesio
           codedeploy-deployment-group: uesio-app-deployment-group
           wait-for-minutes: 5
           task-definition: ./aws/${{ inputs.environment }}/ecr/task_definitions/uesio_web.json
-          service: ${{ secrets.ECS_SERVICE }}
-          cluster: ${{ secrets.ECS_CLUSTER }}
+          service: uesio-app
+          cluster: uesio-app
           wait-for-service-stability: true
