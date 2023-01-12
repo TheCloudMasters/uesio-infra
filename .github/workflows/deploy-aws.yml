@@ -23,7 +23,10 @@ jobs:
     name: Deploy to AWS - ${{ inputs.environment }}
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
-
+    env:
+      imageIdFile: ./aws/${{ inputs.environment }}/ecr/task_definitions/image.txt
+      taskDefinitionFile: ./aws/${{ inputs.environment }}/ecr/task_definitions/uesio_web.json
+      appSpecFile: ./aws/${{ inputs.environment }}/ecr/task_definitions/appspec.yaml
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -35,21 +38,25 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
-      # - name: Fill in the new image ID in the Amazon ECS task definition
-      #   id: ecs-task-def
-      #   uses: aws-actions/amazon-ecs-render-task-definition@97587c9d45a4930bf0e3da8dd2feb2a463cf4a3a
-      #   with:
-      #     task-definition: ./aws/${{ inputs.environment }}/ecr/task_definitions/uesio_web.json
-      #     image: ${{ inputs.environment }}
-
+      - name: Load image id from file
+        id: image-loader
+        run: export IMAGE_ID=$(cat $imageIdFile)
+      - name: Log the image id
+        run: echo "Image id is $IMAGE_ID"
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: ecs-task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@97587c9d45a4930bf0e3da8dd2feb2a463cf4a3a
+        with:
+          task-definition: ${{ env.taskDefinitionFile }}
+          image: ${{ env.IMAGE_ID }}
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@de0132cf8cdedb79975c6d42b77eb7ea193cf28e
         with:
-          codedeploy-appspec: ./aws/${{ inputs.environment }}/ecr/task_definitions/appspec.yaml
+          codedeploy-appspec: ${{ env.appSpecFile }}
           codedeploy-application: tcm-uesio-${{ inputs.environment }}-uesio-${{ inputs.environment }}
           codedeploy-deployment-group: tcm-uesio-${{ inputs.environment }}-uesio-${{ inputs.environment }}
           wait-for-minutes: 5
-          task-definition: ./aws/${{ inputs.environment }}/ecr/task_definitions/uesio_web.json
+          task-definition: ${{ env.taskDefinitionFile }}
           service: ${{ secrets.ECS_SERVICE }}
           cluster: ${{ secrets.ECS_CLUSTER }}
           wait-for-service-stability: true
