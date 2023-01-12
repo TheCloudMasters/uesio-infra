@@ -1,0 +1,1 @@
+666606836305.dkr.ecr.us-east-1.amazonaws.com/uesio:latest

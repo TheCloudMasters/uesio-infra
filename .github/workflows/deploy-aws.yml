@@ -40,7 +40,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Load image id from file
         id: image-loader
-        run: export IMAGE_ID=$(cat $imageIdFile)
+        run: echo "IMAGE_ID=$(cat $imageIdFile)" >> $GITHUB_ENV
       - name: Log the image id
         run: echo "Image id is $IMAGE_ID"
       - name: Fill in the new image ID in the Amazon ECS task definition
@@ -49,6 +49,7 @@ jobs:
         with:
           task-definition: ${{ env.taskDefinitionFile }}
           image: ${{ env.IMAGE_ID }}
+          container-name: uesio_app
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@de0132cf8cdedb79975c6d42b77eb7ea193cf28e
         with:
