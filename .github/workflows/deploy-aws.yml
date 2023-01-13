@@ -57,7 +57,7 @@ jobs:
           codedeploy-application: tcm-uesio-${{ inputs.environment }}-uesio-${{ inputs.environment }}
           codedeploy-deployment-group: tcm-uesio-${{ inputs.environment }}-uesio-${{ inputs.environment }}
           wait-for-minutes: 5
-          task-definition: ${{ env.taskDefinitionFile }}
+          task-definition: ${{ steps.ecs-task-def.task-definition }}
           service: ${{ secrets.ECS_SERVICE }}
           cluster: ${{ secrets.ECS_CLUSTER }}
           wait-for-service-stability: true
