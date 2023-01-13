@@ -1,9 +1,12 @@
+# Redeploys to Dev/UAT/Prod if there are any changes to the ECS task definitions
 name: Build
 
 on:
   push:
     branches:
       - main
+    paths:
+      - aws/{dev|uat|prod}/ecs/**
 
 jobs:
   deploy-dev:

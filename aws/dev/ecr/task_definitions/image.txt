@@ -1,1 +1,0 @@
-666606836305.dkr.ecr.us-east-1.amazonaws.com/uesio:3f240bdf351390422bef44baabd2502f88989c88
