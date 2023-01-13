@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - aws/(dev|uat|prod)/ecs/task_definitions/*
+      - aws/**
 
 jobs:
   deploy-dev:
