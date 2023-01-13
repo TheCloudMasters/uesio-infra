@@ -24,8 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     env:
-      taskDefinitionFile: ./aws/${{ inputs.environment }}/ecr/task_definitions/uesio_web.json
-      appSpecFile: ./aws/${{ inputs.environment }}/ecr/task_definitions/appspec.yaml
+      taskDefinitionFile: ./aws/${{ inputs.environment }}/ecs/task_definitions/uesio_web.json
+      appSpecFile: ./aws/${{ inputs.environment }}/ecs/task_definitions/appspec.yaml
     steps:
       - name: Checkout
         uses: actions/checkout@v2
