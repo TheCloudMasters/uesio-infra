@@ -7,6 +7,7 @@ on:
       - main
     paths:
       - "aws/**"
+      - ".github/workflows/**"
 
 jobs:
   deploy-dev:
