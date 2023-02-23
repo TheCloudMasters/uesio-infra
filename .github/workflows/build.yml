@@ -1,4 +1,4 @@
-# Redeploys to Dev/UAT/Prod if there are any changes to the ECS task definitions
+# Redeploys to Dev (and in future, optionally to UAT/Prod) if there are any changes to the ECS task definitions
 name: Build
 
 on:
