@@ -1,0 +1,16 @@
+# Redeploys to UAT if there are any changes to the UAT ECS task definitions
+name: Deploy to UAT
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "aws/uat/ecs/**"
+
+jobs:
+  deploy-uat:
+    uses: ./.github/workflows/deploy-aws.yml
+    with:
+      environment: uat
+    secrets: inherit

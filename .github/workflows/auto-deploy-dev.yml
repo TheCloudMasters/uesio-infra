@@ -1,0 +1,16 @@
+# Redeploys to Dev if there are any changes to the dev ECS task definitions
+name: Deploy to DEV
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "aws/dev/ecs/**"
+
+jobs:
+  deploy-dev:
+    uses: ./.github/workflows/deploy-aws.yml
+    with:
+      environment: dev
+    secrets: inherit
