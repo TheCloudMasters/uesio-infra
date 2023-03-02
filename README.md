@@ -16,12 +16,12 @@ Whenever the `uesio` repo's `master` branch is built, a Github Action workflow w
 
 To update the UAT / Prod environments, one of the files in the corresponding ECS Task Definition must be updated, and this will automatically update the corresponding environment:
 
-```./aws/[uat|prod]/ecs/task_definitions/[appspec.yaml|uesio_web.json]```
+- [./aws/[uat|prod]/ecs/task_definitions](./aws/[uat|prod]/ecs/task_definitions)
 
 These deploy to the following environments:
 
-    - uat: https://studio.ues-uat.io
-    - prod: https://studio.ues.io
+- uat: https://studio.ues-uat.io
+- prod: https://studio.ues.io
 
 ### Manual deployments
 
