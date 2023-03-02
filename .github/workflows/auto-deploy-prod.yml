@@ -1,0 +1,16 @@
+# Redeploys to PROD if there are any changes to the PROD ECS task definitions
+name: Deploy to PROD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "aws/prod/ecs/**"
+
+jobs:
+  deploy-prod:
+    uses: ./.github/workflows/deploy-aws.yml
+    with:
+      environment: prod
+    secrets: inherit

@@ -6,7 +6,7 @@ on:
       environment:
         description: "Deployment Environment"
         required: true
-        default: "dev"
+        default: "uat"
         type: choice
         options:
           - dev

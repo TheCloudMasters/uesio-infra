@@ -1,0 +1,167 @@
+{
+    "family": "uesio",
+    "containerDefinitions": [
+      {
+        "name": "uesio_app",
+        "image": "666606836305.dkr.ecr.us-east-1.amazonaws.com/uesio:482a0e19adf928461b7b9954e486e9a5ab144251",
+        "cpu": 512,
+        "memory": 1024,
+        "portMappings": [
+          {
+            "containerPort": 3000,
+            "hostPort": 3000,
+            "protocol": "tcp"
+          }
+        ],
+        "essential": true,
+        "environment": [
+          {
+            "name": "UESIO_BUNDLES_BUCKET_NAME",
+            "value": "tcm-uesiobundlestore-prod"
+          },
+          {
+            "name": "UESIO_PLATFORM_DATASOURCE_TYPE",
+            "value": "uesio.postgresio"
+          },
+          {
+            "name": "REDIS_HOST",
+            "value": "redis-cluster.ues.io"
+          },
+          {
+            "name": "UESIO_DB_PORT",
+            "value": "5432"
+          },
+          {
+            "name": "UESIO_SESSION_STORE",
+            "value": "redis"
+          },
+          {
+            "name": "UESIO_DB_USER",
+            "value": "postgres"
+          },
+          {
+            "name": "UESIO_DB_DATABASE",
+            "value": "postgresio"
+          },
+          {
+            "name": "UESIO_CACHE_SITE_BUNDLES",
+            "value": "true"
+          },
+          {
+            "name": "UESIO_PLATFORM_BUNDLESTORE_TYPE",
+            "value": "uesio.s3"
+          },
+          {
+            "name": "REDIS_PORT",
+            "value": "6379"
+          },
+          {
+            "name": "UESIO_PLATFORM_BUNDLESTORE_CREDENTIALS",
+            "value": "uesio/core.aws"
+          },
+          {
+            "name": "UESIO_PLATFORM_FILESOURCE_CREDENTIALS",
+            "value": "uesio/core.aws"
+          },
+          {
+            "name": "UESIO_PLATFORM_AUTHSOURCE_CREDENTIALS",
+            "value": "uesio/core.cognito"
+          },
+          {
+            "name": "UESIO_PLATFORM_AUTHSOURCE_TYPE",
+            "value": "cognito"
+          },
+          {
+            "name": "UESIO_USERFILES_BUCKET_NAME",
+            "value": "tcm-uesiofiles-prod"
+          },
+          {
+            "name": "UESIO_PLATFORM_DATASOURCE_CREDENTIALS",
+            "value": "uesio/core.db"
+          },
+          {
+            "name": "UESIO_PLATFORM_FILESOURCE_TYPE",
+            "value": "uesio.s3"
+          },
+          {
+            "name": "UESIO_DB_HOST",
+            "value": "write.ues.io"
+          }
+        ],
+        "secrets": [
+          {
+            "name": "UESIO_DB_PASSWORD",
+            "valueFrom": "arn:aws:secretsmanager:us-east-1:460657680679:secret:/rds/aurora/tcm-uesio-prod-rds-aurora-2pfXhW:password::"
+          },
+          {
+            "name": "COGNITO_POOL_ID",
+            "valueFrom": "arn:aws:secretsmanager:us-east-1:460657680679:secret:/uesio-ecs/env/cognito-SrIV6w:cognito_pool_id::"
+          },
+          {
+            "name": "COGNITO_CLIENT_ID",
+            "valueFrom": "arn:aws:secretsmanager:us-east-1:460657680679:secret:/uesio-ecs/env/cognito-SrIV6w:cognito_client_id::"
+          }
+        ],
+        "mountPoints": [],
+        "volumesFrom": [],
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+            "awslogs-group": "tcm-uesio-prod/prod/uesio",
+            "awslogs-region": "us-east-1",
+            "awslogs-stream-prefix": "uesio"
+          }
+        }
+      }
+    ],
+    "taskRoleArn": "arn:aws:iam::460657680679:role/tcm-uesio-prod-ecs-cluster-ECSTaskIamRole-1GBUSORAI4Z1C",
+    "executionRoleArn": "arn:aws:iam::460657680679:role/tcm-uesio-prod-ecs-cluster-ECSTaskExecutionRole-1OVO34GCW60TV",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": [
+      "FARGATE"
+    ],
+    "cpu": "512",
+    "memory": "1024",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "ecs.capability.secrets.asm.environment-variables"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "tags": []
+  }
+    
