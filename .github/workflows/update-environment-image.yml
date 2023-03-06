@@ -1,10 +1,18 @@
-name: Update UAT / PROD Docker image
+name: Promote DEV/UAT Docker image to UAT/PROD
 
 on:
   workflow_dispatch:
     inputs:
-      environment:
-        description: "Environment to update"
+      sourceEnv:
+        description: "Source environment"
+        required: true
+        default: "dev"
+        type: choice
+        options:
+          - dev
+          - uat
+      targetEnv:
+        description: "Target environment to update"
         required: true
         default: "uat"
         type: choice
@@ -14,9 +22,9 @@ on:
 
 jobs:
   deploy:
-    name: "Update Docker image for ECS task def for: ${{ inputs.environment }}"
+    name: "Update Docker image"
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
+    environment: ${{ inputs.sourceEnv }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -24,6 +32,7 @@ jobs:
           fetch-depth: 0
       - name: Update Docker image
         env:
-          targetEnv: ${{ inputs.environment }}
+          sourceEnv: ${{ inputs.sourceEnv }}
+          targetEnv: ${{ inputs.targetEnv }}
         run: bash scripts/update-env-image.sh
       

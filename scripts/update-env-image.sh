@@ -2,21 +2,22 @@
 
 set -e
 
+sourceEnv="${sourceEnv:-dev}"
 targetEnv="${targetEnv:-uat}"
 
-devImage=$(cat ./aws/dev/ecs/task_definitions/uesio_web.json | jq -r '.containerDefinitions[0].image')
+sourceImage=$(cat ./aws/$sourceEnv/ecs/task_definitions/uesio_web.json | jq -r '.containerDefinitions[0].image')
 targetTaskPath="./aws/$targetEnv/ecs/task_definitions/uesio_web.json"
 targetImage=$(cat $targetTaskPath | jq -r '.containerDefinitions[0].image')
 
-# If dev and target env are already in sync, bail out.
-if [ $devImage == $targetImage ]; then
-  echo "$targetEnv is already in sync with dev, no changes needed."
+# If source and target env are already in sync, bail out.
+if [ $sourceImage == $targetImage ]; then
+  echo "$targetEnv is already in sync with $sourceEnv, no changes needed."
   exit 0
 fi
 
-jq --arg img "$devImage" '.containerDefinitions[0].image = $img' $targetTaskPath > tmp.json
+jq --arg img "$sourceImage" '.containerDefinitions[0].image = $img' $targetTaskPath > tmp.json
 mv tmp.json $targetTaskPath
 
 git add $targetTaskPath
-git commit -m "release: Update ${{ targetEnv }} image to $devImage"
+git commit -m "release: Update ${{ targetEnv }} image to $sourceImage"
 git push
