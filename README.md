@@ -14,11 +14,11 @@ Whenever the `uesio` repo's `master` branch is built, a Github Action workflow w
 
 ### uat / prod
 
-To update the UAT / Prod environments, one of the files in the corresponding ECS Task Definition must be updated, and this will automatically update the corresponding environment:
+To update the UAT / Prod environments, one of the files in the corresponding ECS Task Definition must be updated, and this will automatically update the corresponding environment.
 
-- [./aws/[uat|prod]/ecs/task_definitions](./aws/[uat|prod]/ecs/task_definitions)
+To promote what's in dev/uat to uat/prod, run this Github Workflow:
 
-To promote what's in dev/uat to uat/prod automatically, you can run the "Promote DEV/UAT Docker image to UAT/PROD" Github Workflow.
+- [Promote DEV/UAT Docker image to UAT/PROD](./actions/workflows/update-environment-image.yml)
 
 ** NOTE ** In Prod, this will only _create_ a new Task Definition, but it will NOT automatically re-route traffic. To actually deploy, you will need to login to AWS UAT / Prod, account, go to the corresponding [Code Deploy Deployment](https://us-east-1.console.aws.amazon.com/codesuite/codedeploy/deployments?region=us-east-1) ( will be the latest Deployment in the list) and click "Re-route Traffic". Once you are sure everything looks good, you can click "Terminate Original Task Set" (or just wait for an hour and it will automatically be terminated by CodeDeploy).
 
