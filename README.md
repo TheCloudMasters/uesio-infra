@@ -18,7 +18,7 @@ To update the UAT / Prod environments, one of the files in the corresponding ECS
 
 To promote what's in dev/uat to uat/prod, run this Github Workflow:
 
-- [Promote DEV/UAT Docker image to UAT/PROD](./actions/workflows/update-environment-image.yml)
+- [Promote DEV/UAT Docker image to UAT/PROD](../../actions/workflows/update-environment-image.yml)
 
 ** NOTE ** In Prod, this will only _create_ a new Task Definition, but it will NOT automatically re-route traffic. To actually deploy, you will need to login to AWS UAT / Prod, account, go to the corresponding [Code Deploy Deployment](https://us-east-1.console.aws.amazon.com/codesuite/codedeploy/deployments?region=us-east-1) ( will be the latest Deployment in the list) and click "Re-route Traffic". Once you are sure everything looks good, you can click "Terminate Original Task Set" (or just wait for an hour and it will automatically be terminated by CodeDeploy).
 
