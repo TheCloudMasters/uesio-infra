@@ -17,8 +17,6 @@ fi
 jq --arg img "$devImage" '.containerDefinitions[0].image = $img' $targetTaskPath > tmp.json
 mv tmp.json $targetTaskPath
 
-git config user.name github-actions
-git config user.email github-actions@github.com
 git add $targetTaskPath
 git commit -m "release: Update ${{ targetEnv }} image to $devImage"
 git push
