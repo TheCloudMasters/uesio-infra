@@ -21,7 +21,7 @@ on:
           - prod
 
 jobs:
-  deploy:
+  update-image:
     name: "Update Docker image"
     runs-on: ubuntu-latest
     environment: ${{ inputs.sourceEnv }}
@@ -36,4 +36,10 @@ jobs:
           targetEnv: ${{ inputs.targetEnv }}
           gitUsername: ${{ github.actor }}
         run: bash scripts/update-env-image.sh
+  deploy:
+    name: Deploy to AWS - ${{ inputs.targetEnv }}
+    uses: ./.github/workflows/deploy-aws.yml
+    with:
+      environment: ${{ inputs.targetEnv }}
+    secrets: inherit
       

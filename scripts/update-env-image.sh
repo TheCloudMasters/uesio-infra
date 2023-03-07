@@ -21,5 +21,5 @@ mv tmp.json $targetTaskPath
 git config --global user.name "$gitUsername"
 
 git add $targetTaskPath
-git commit -m "release: Update $targetEnv image to $sourceImage"
+git commit -m "release: Promote $sourceEnv image to $targetEnv"
 git push
