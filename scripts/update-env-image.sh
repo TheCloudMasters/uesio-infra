@@ -19,5 +19,5 @@ jq --arg img "$sourceImage" '.containerDefinitions[0].image = $img' $targetTaskP
 mv tmp.json $targetTaskPath
 
 git add $targetTaskPath
-git commit -m "release: Update ${{ targetEnv }} image to $sourceImage"
+git commit -m "release: Update $targetEnv image to $sourceImage"
 git push
