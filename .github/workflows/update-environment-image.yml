@@ -34,5 +34,6 @@ jobs:
         env:
           sourceEnv: ${{ inputs.sourceEnv }}
           targetEnv: ${{ inputs.targetEnv }}
+          gitUsername: ${{ github.actor }}
         run: bash scripts/update-env-image.sh
       

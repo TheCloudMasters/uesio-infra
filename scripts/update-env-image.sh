@@ -18,6 +18,8 @@ fi
 jq --arg img "$sourceImage" '.containerDefinitions[0].image = $img' $targetTaskPath > tmp.json
 mv tmp.json $targetTaskPath
 
+git config --global user.name "$gitUsername"
+
 git add $targetTaskPath
 git commit -m "release: Update $targetEnv image to $sourceImage"
 git push
