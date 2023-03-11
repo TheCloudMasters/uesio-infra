@@ -38,6 +38,8 @@ jobs:
         run: bash scripts/update-env-image.sh
   deploy:
     name: Deploy to AWS - ${{ inputs.targetEnv }}
+    needs: update-image
+    runs-on: ubuntu-latest
     uses: ./.github/workflows/deploy-aws.yml
     with:
       environment: ${{ inputs.targetEnv }}
