@@ -1,5 +1,5 @@
 {
-  "family": "uesio",
+  "family": "uesio_worker",
   "containerDefinitions": [
     {
       "name": "uesio_worker",
