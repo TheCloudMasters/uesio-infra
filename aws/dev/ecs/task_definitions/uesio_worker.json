@@ -4,8 +4,8 @@
     {
       "name": "uesio_worker",
       "image": "666606836305.dkr.ecr.us-east-1.amazonaws.com/uesio:9b209261b654b29c9538b70420601759c0a38eac",
-      "cpu": 512,
-      "memory": 1024,
+      "cpu": 128,
+      "memory": 128,
       "portMappings": [
         {
           "containerPort": 3000,
@@ -124,7 +124,7 @@
   "requiresCompatibilities": [
     "FARGATE"
   ],
-  "cpu": "512",
-  "memory": "1024"
+  "cpu": "128",
+  "memory": "128"
 }
   
