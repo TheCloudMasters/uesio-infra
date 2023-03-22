@@ -5,21 +5,26 @@ set -e
 sourceEnv="${sourceEnv:-dev}"
 targetEnv="${targetEnv:-prod}"
 
-sourceImage=$(cat ./aws/$sourceEnv/ecs/task_definitions/uesio_web.json | jq -r '.containerDefinitions[0].image')
-targetTaskPath="./aws/$targetEnv/ecs/task_definitions/uesio_web.json"
-targetImage=$(cat $targetTaskPath | jq -r '.containerDefinitions[0].image')
+sourceAppImage=$(cat ./aws/$sourceEnv/ecs/task_definitions/uesio_web.json | jq -r '.containerDefinitions[0].image')
+sourceWorkerImage=$(cat ./aws/$sourceEnv/ecs/task_definitions/uesio_worker.json | jq -r '.containerDefinitions[0].image')
+targetAppTaskPath="./aws/$targetEnv/ecs/task_definitions/uesio_web.json"
+targetWorkerTaskPath="./aws/$targetEnv/ecs/task_definitions/uesio_worker.json"
+targetAppImage=$(cat $targetAppTaskPath | jq -r '.containerDefinitions[0].image')
+targetWorkerImage=$(cat $targetWorkerTaskPath | jq -r '.containerDefinitions[0].image')
 
 # If source and target env are already in sync, bail out.
-if [ $sourceImage == $targetImage ]; then
+if [ $sourceAppImage == $targetAppImage ] && [ $sourceWorkerImage == $targetWorkerImage ]; then
   echo "$targetEnv is already in sync with $sourceEnv, no changes needed."
   exit 0
 fi
 
-jq --arg img "$sourceImage" '.containerDefinitions[0].image = $img' $targetTaskPath > tmp.json
-mv tmp.json $targetTaskPath
+jq --arg img "$sourceAppImage" '.containerDefinitions[0].image = $img' $targetAppTaskPath > tmpApp.json
+jq --arg img "$sourceWorkerImage" '.containerDefinitions[0].image = $img' $targetWorkerTaskPath > tmpWorker.json
+mv tmpApp.json $targetAppTaskPath
+mv tmpWorker.json $targetWorkerTaskPath
 
 git config --global user.name "$gitUsername"
 
-git add $targetTaskPath
+git add $targetAppTaskPath $targetWorkerTaskPath
 git commit -m "release: Promote $sourceEnv image to $targetEnv"
 git push
