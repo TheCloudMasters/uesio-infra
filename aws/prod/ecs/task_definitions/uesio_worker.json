@@ -1,8 +1,8 @@
 {
-  "family": "uesio",
+  "family": "uesio_worker",
   "containerDefinitions": [
     {
-      "name": "uesio_app",
+      "name": "uesio_worker",
       "image": "666606836305.dkr.ecr.us-east-1.amazonaws.com/uesio:81b375b0daa4a78306cc6840dd3798ff184e94ca",
       "cpu": 512,
       "memory": 1024,
@@ -12,6 +12,10 @@
           "hostPort": 3000,
           "protocol": "tcp"
         }
+      ],
+      "command": [
+        "./uesio",
+        "worker"
       ],
       "essential": true,
       "environment": [
@@ -109,7 +113,7 @@
         "options": {
           "awslogs-group": "tcm-uesio-prod/prod/uesio",
           "awslogs-region": "us-east-1",
-          "awslogs-stream-prefix": "uesio"
+          "awslogs-stream-prefix": "uesio-worker"
         }
       }
     }
@@ -129,3 +133,4 @@
   ],
   "tags": []
 }
+  
