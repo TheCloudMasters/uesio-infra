@@ -1,4 +1,4 @@
-name: Promote DEV/UAT Docker image to UAT/PROD
+name: Promote DEV Docker image to PROD
 
 on:
   workflow_dispatch:
@@ -10,14 +10,12 @@ on:
         type: choice
         options:
           - dev
-          - uat
       targetEnv:
         description: "Target environment to update"
         required: true
-        default: "uat"
+        default: "prod"
         type: choice
         options:
-          - uat
           - prod
 
 jobs:

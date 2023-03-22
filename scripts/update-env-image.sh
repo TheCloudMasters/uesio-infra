@@ -3,7 +3,7 @@
 set -e
 
 sourceEnv="${sourceEnv:-dev}"
-targetEnv="${targetEnv:-uat}"
+targetEnv="${targetEnv:-prod}"
 
 sourceImage=$(cat ./aws/$sourceEnv/ecs/task_definitions/uesio_web.json | jq -r '.containerDefinitions[0].image')
 targetTaskPath="./aws/$targetEnv/ecs/task_definitions/uesio_web.json"

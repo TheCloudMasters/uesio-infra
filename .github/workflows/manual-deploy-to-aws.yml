@@ -6,11 +6,10 @@ on:
       environment:
         description: "Deployment Environment"
         required: true
-        default: "uat"
+        default: "prod"
         type: choice
         options:
           - dev
-          - uat
           - prod
 
 jobs:
