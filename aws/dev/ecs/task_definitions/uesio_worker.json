@@ -99,11 +99,11 @@
         },
         {
           "name": "COGNITO_POOL_ID",
-          "valueFrom": "arn:aws:secretsmanager:us-east-1:666606836305:secret:/uesio-ecs/env/cognito-BYkr6n:cognito_pool_id::"
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:666606836305:secret:uesio-web/env/secrets-4Zg9nY:cognito_pool_id::"
         },
         {
           "name": "COGNITO_CLIENT_ID",
-          "valueFrom": "arn:aws:secretsmanager:us-east-1:666606836305:secret:/uesio-ecs/env/cognito-BYkr6n:cognito_client_id::"
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:666606836305:secret:uesio-web/env/secrets-4Zg9nY:cognito_client_id::"
         }
       ],
       "mountPoints": [],
