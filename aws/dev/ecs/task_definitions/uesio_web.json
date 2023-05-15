@@ -86,10 +86,6 @@
         {
           "name": "UESIO_DB_HOST",
           "value": "write.ues-dev.io"
-        },
-        {
-          "name": "UESIO_USE_HTTP_2",
-          "value": "true"
         }
       ],
       "secrets": [
