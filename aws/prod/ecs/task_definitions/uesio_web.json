@@ -86,6 +86,10 @@
         {
           "name": "UESIO_DB_HOST",
           "value": "write.ues.io"
+        },
+        {
+          "name": "UESIO_STATIC_ASSETS_HOST",
+          "value": "https://www.ues.io"
         }
       ],
       "secrets": [
