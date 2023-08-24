@@ -1,0 +1,17 @@
+name: Scale ECS tasks down during off-peak hours
+
+on:
+  schedule:
+    # - cron: "0 20 * * 1,2,3,4,5"
+    - cron: "0 16 * * 1,2,3,4,5"
+
+jobs:
+  scale-down-dev:
+    secrets: inherit
+    name: Scale ECS cluster - dev
+    uses: ./.github/workflows/scale-ecs.yml
+    with:
+      environment: dev
+      appTaskDesiredCount: 0
+      workerTaskDesiredCount: 0
+      
