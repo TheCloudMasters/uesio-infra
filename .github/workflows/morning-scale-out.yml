@@ -5,19 +5,13 @@ on:
     # - cron: "0 6 * * 1,2,3,4,5"
     - cron: "0 17 * * 1,2,3,4,5"
 
-# Request permissions to be able to access the Github OIDC JWT,
-# which is needed for AWS actions.
-permissions:
-  id-token: write   # This is required for requesting a JWT
-  contents: read    # This is required for actions/checkout
-
 jobs:
   scale-up-dev:
     secrets: inherit
-    name: Scale UP Dev ECS cluster
+    name: Scale UP ECS cluster - Dev
     uses: ./.github/workflows/scale-ecs.yml
     with:
-        environment: dev
-        appTaskDesiredCount: 1
-        workerTaskDesiredCount: 1
+      environment: dev
+      appTaskDesiredCount: 1
+      workerTaskDesiredCount: 1
         

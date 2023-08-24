@@ -8,7 +8,7 @@ on:
 jobs:
   scale-down-dev:
     secrets: inherit
-    name: Scale ECS cluster - dev
+    name: Scale DOWN ECS cluster - Dev
     uses: ./.github/workflows/scale-ecs.yml
     with:
       environment: dev

@@ -7,10 +7,10 @@ on:
         type: string
         required: true
       appTaskDesiredCount:
-        type: number
+        type: string
         required: true
       workerTaskDesiredCount:
-        type: number
+        type: string
         required: true
     secrets:
       AWS_ECS_ROLE_ARN:
