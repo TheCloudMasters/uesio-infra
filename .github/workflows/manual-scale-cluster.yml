@@ -1,0 +1,34 @@
+name: Manually scale tasks in an ECS cluster
+
+on:
+    workflow_dispatch:
+      inputs:
+        environment:
+          description: "Target cluster"
+          required: true
+          default: "dev"
+          type: choice
+          options:
+            - dev
+            - prod
+        workerTaskDesiredCount:
+          description: "Worker task desired count"
+          required: true
+          default: "1"
+          type: number
+        appTaskDesiredCount:
+          description: "Web App task desired count"
+          required: true
+          default: "1"
+          type: number
+
+jobs:
+  deploy:
+    name: Scale ECS cluster - ${{ inputs.environment }}
+    uses: ./.github/workflows/scale-ecs.yml
+    secrets: inherit
+    with:
+      environment: ${{ inputs.environment }}
+      appTaskDesiredCount: ${{ inputs.appTaskDesiredCount }}
+      workerTaskDesiredCount: ${{ inputs.workerTaskDesiredCount }}
+      

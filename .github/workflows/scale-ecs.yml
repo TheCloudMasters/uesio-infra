@@ -1,0 +1,59 @@
+name: Scale AWS ECS tasks to a desired count
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        required: true
+      appTaskDesiredCount:
+        type: number
+        required: true
+      workerTaskDesiredCount:
+        type: number
+        required: true
+    secrets:
+      AWS_ECS_ROLE_ARN:
+        required: true
+      AWS_REGION:
+        required: true
+      ECS_CLUSTER:
+        required: true
+      ECS_SERVICE:
+        required: true
+
+# Request permissions to be able to access the Github OIDC JWT,
+# which is needed for AWS actions.
+permissions:
+  id-token: write   # This is required for requesting a JWT
+  contents: read    # This is required for actions/checkout
+
+jobs:
+  scale:
+    name: Scale ${{ inputs.environment }} cluster
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+            ref: main
+            fetch-depth: 1
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+            role-to-assume: ${{ secrets.AWS_ECS_ROLE_ARN }}
+            role-session-name: ecsscale
+            aws-region: ${{ secrets.AWS_REGION }}
+      - name: Scale worker task
+        uses: zachelrath/github-action-ecs-scale@main
+        with:
+            desired-count: ${{ inputs.workerTaskDesiredCount }}
+            service: tcm-uesio-${{ inputs.environment }}-ecs-service-Worker
+            cluster: ${{ secrets.ECS_CLUSTER }}
+      - name: Scale web app task
+        uses: zachelrath/github-action-ecs-scale@main
+        with:
+            desired-count: ${{ inputs.appTaskDesiredCount }}
+            service: ${{ secrets.ECS_SERVICE }}
+            cluster: ${{ secrets.ECS_CLUSTER }}
