@@ -89,7 +89,7 @@
         },
         {
           "name": "UESIO_DB_HOST",
-          "value": "pit-recovery-cluster.cluster-ct86gtnjbztw.us-east-1.rds.amazonaws.com"
+          "value": "write.ues.io"
         }
       ],
       "secrets": [
