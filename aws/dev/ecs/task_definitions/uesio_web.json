@@ -16,12 +16,12 @@
       "essential": true,
       "environment": [
         {
-          "name": "UESIO_BUNDLES_BUCKET_NAME",
-          "value": "uesiobundlestore-dev"
+          "name": "UESIO_PRIMARY_DOMAIN",
+          "value": "ues-dev.io"
         },
         {
-          "name": "UESIO_PLATFORM_DATASOURCE_TYPE",
-          "value": "uesio.postgresio"
+          "name": "UESIO_BUNDLES_BUCKET_NAME",
+          "value": "uesiobundlestore-dev"
         },
         {
           "name": "REDIS_HOST",
