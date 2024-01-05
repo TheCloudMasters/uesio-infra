@@ -24,6 +24,7 @@ mv tmpApp.json $targetAppTaskPath
 mv tmpWorker.json $targetWorkerTaskPath
 
 git config --global user.name "$gitUsername"
+git config --global user.email "$gitEmail"
 
 git add $targetAppTaskPath $targetWorkerTaskPath
 git commit -m "release: Promote $sourceEnv image to $targetEnv"

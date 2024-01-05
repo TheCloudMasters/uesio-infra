@@ -33,6 +33,7 @@ jobs:
           sourceEnv: ${{ inputs.sourceEnv }}
           targetEnv: ${{ inputs.targetEnv }}
           gitUsername: ${{ github.actor }}
+          gitEmail: "${{ github.event.sender.id }}+${{ github.event.sender.login }}@users.noreply.github.com"
         run: bash scripts/update-env-image.sh
   deploy:
     name: Deploy to AWS - ${{ inputs.targetEnv }}
