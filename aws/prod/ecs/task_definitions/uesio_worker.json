@@ -20,6 +20,10 @@
       "essential": true,
       "environment": [
         {
+          "name": "UESIO_BUNDLE_STORE_DOMAIN",
+          "value": "ues.io"
+        },
+	{
           "name": "UESIO_PRIMARY_DOMAIN",
           "value": "ues.io"
         },
