@@ -112,6 +112,10 @@
         {
           "name": "OPENAI_API_KEY",
           "valueFrom": "arn:aws:secretsmanager:us-east-1:460657680679:secret:/uesio-web/env/secrets-rJBtdy:openai_api_key::"
+        },
+        {
+          "name": "UESIO_SECRET_UESIO_CORE_SENDGRIDKEY",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:460657680679:secret:/uesio-web/env/secrets-rJBtdy:sendgrid_api_key::"
         }
       ],
       "mountPoints": [],
