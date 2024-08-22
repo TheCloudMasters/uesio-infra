@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "uesio_worker",
-      "image": "666606836305.dkr.ecr.us-east-1.amazonaws.com/uesio:24e494e202efc96bae7b98dfa06b866dba8238a3",
+      "image": "666606836305.dkr.ecr.us-east-1.amazonaws.com/uesio:b67d259ed31879e766debab53386fbdb9cae62dc",
       "cpu": 256,
       "memory": 512,
       "portMappings": [
