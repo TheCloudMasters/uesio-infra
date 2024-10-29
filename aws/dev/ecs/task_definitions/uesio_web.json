@@ -116,6 +116,10 @@
         {
           "name": "UESIO_SECRET_UESIO_CORE_SENDGRIDKEY",
           "valueFrom": "arn:aws:secretsmanager:us-east-1:666606836305:secret:uesio-web/env/secrets-4Zg9nY:sendgrid_api_key::"
+        },
+        {
+          "name": "UESIO_SECRET_UESIO_APPKIT_RESEND_KEY",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:666606836305:secret:uesio-web/env/secrets-4Zg9nY:resend_api_key::"
         }
       ],
       "mountPoints": [],
