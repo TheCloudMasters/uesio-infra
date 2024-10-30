@@ -68,14 +68,6 @@
           "value": "uesio/core.aws"
         },
         {
-          "name": "UESIO_PLATFORM_AUTHSOURCE_CREDENTIALS",
-          "value": "uesio/core.cognito"
-        },
-        {
-          "name": "UESIO_PLATFORM_AUTHSOURCE_TYPE",
-          "value": "cognito"
-        },
-        {
           "name": "UESIO_USERFILES_BUCKET_NAME",
           "value": "tcm-uesiofiles-prod"
         },
@@ -100,14 +92,6 @@
         {
           "name": "UESIO_DB_PASSWORD",
           "valueFrom": "arn:aws:secretsmanager:us-east-1:460657680679:secret:/rds/aurora/tcm-uesio-prod-rds-aurora-2pfXhW:password::"
-        },
-        {
-          "name": "COGNITO_POOL_ID",
-          "valueFrom": "arn:aws:secretsmanager:us-east-1:460657680679:secret:/uesio-web/env/secrets-rJBtdy:cognito_pool_id::"
-        },
-        {
-          "name": "COGNITO_CLIENT_ID",
-          "valueFrom": "arn:aws:secretsmanager:us-east-1:460657680679:secret:/uesio-web/env/secrets-rJBtdy:cognito_client_id::"
         },
         {
           "name": "OPENAI_API_KEY",
