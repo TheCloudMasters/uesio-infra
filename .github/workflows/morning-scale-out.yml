@@ -1,10 +1,11 @@
 name: Scale ECS tasks up for peak hours
 
 on:
-  schedule:
+  workflow_dispatch:
+  # schedule:
     # Schedule for 8:48 AM Switzerland time. Github recommends that you 
     # NOT schedule at common times like top of the hour, etc. to avoid delays.
-    - cron: "48 6 * * 1,2,3,4,5"
+    # - cron: "48 6 * * 1,2,3,4,5"
 
 jobs:
   scale-up-dev:

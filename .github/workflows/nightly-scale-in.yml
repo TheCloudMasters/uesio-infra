@@ -1,10 +1,11 @@
 name: Scale ECS tasks down during off-peak hours
 
 on:
-  schedule:
+  workflow_dispatch:
+  # schedule:
     # Schedule for 5:39 Eastern time. Github recommends that you 
     # NOT schedule at common times like top of the hour, etc. to avoid delays.
-    - cron: "39 21 * * 1,2,3,4,5"
+    # - cron: "39 21 * * 1,2,3,4,5"
 
 jobs:
   scale-down-dev:
