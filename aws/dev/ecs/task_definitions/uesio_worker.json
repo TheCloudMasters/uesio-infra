@@ -36,6 +36,10 @@
           "value": "tcrtwqn3akb2b2r.eafgxk.ng.0001.use1.cache.amazonaws.com"
         },
         {
+          "name": "UESIO_REDIS_HOST",
+          "value": "tcrtwqn3akb2b2r.eafgxk.ng.0001.use1.cache.amazonaws.com"
+        },        
+        {
           "name": "UESIO_DB_PORT",
           "value": "5432"
         },
@@ -61,6 +65,10 @@
         },
         {
           "name": "REDIS_PORT",
+          "value": "6379"
+        },
+        {
+          "name": "UESIO_REDIS_PORT",
           "value": "6379"
         },
         {

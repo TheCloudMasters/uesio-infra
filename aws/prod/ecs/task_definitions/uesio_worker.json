@@ -36,6 +36,10 @@
           "value": "redis-cluster.ues.io"
         },
         {
+          "name": "UESIO_REDIS_HOST",
+          "value": "redis-cluster.ues.io"
+        },        
+        {
           "name": "UESIO_DB_PORT",
           "value": "5432"
         },
@@ -61,6 +65,10 @@
         },
         {
           "name": "REDIS_PORT",
+          "value": "6379"
+        },
+        {
+          "name": "UESIO_REDIS_PORT",
           "value": "6379"
         },
         {
