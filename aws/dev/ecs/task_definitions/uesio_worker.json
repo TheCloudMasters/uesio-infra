@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "uesio_worker",
-      "image": "666606836305.dkr.ecr.us-east-1.amazonaws.com/uesio:fdf8f42bb4701d5c8aeea9f570c02cfd16bfae48.600.1",
+      "image": "666606836305.dkr.ecr.us-east-1.amazonaws.com/uesio:579f991393243a87dc6f1ef1fd6129bf6cf68049.604.1",
       "cpu": 256,
       "memory": 512,
       "portMappings": [
@@ -13,7 +13,10 @@
           "protocol": "tcp"
         }
       ],
-      "command": ["./uesio", "worker"],
+      "command": [
+        "./uesio",
+        "worker"
+      ],
       "essential": true,
       "environment": [
         {
@@ -118,7 +121,9 @@
   "taskRoleArn": "arn:aws:iam::666606836305:role/tcm-uesio-dev-ecs-cluster-ECSTaskIamRole-1P5SL84CIJW4F",
   "executionRoleArn": "arn:aws:iam::666606836305:role/tcm-uesio-dev-ecs-cluster-ECSTaskExecutionRole-1SO1H7JFEWLJR",
   "networkMode": "awsvpc",
-  "requiresCompatibilities": ["FARGATE"],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
   "cpu": "256",
   "memory": "512"
 }
