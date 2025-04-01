@@ -13,15 +13,16 @@
           "protocol": "tcp"
         }
       ],
-      "command": [
-        "./uesio",
-        "worker"
-      ],
+      "command": ["./uesio", "worker"],
       "essential": true,
       "environment": [
         {
           "name": "UESIO_BUNDLE_STORE_DOMAIN",
           "value": "ues.io"
+        },
+        {
+          "name": "UESIO_EXTERNAL_BUNDLE_STORE_BASE_URL",
+          "value": "https://studio.ues.io"
         },
         {
           "name": "UESIO_PRIMARY_DOMAIN",
@@ -38,7 +39,7 @@
         {
           "name": "UESIO_REDIS_HOST",
           "value": "redis-cluster.ues.io"
-        },        
+        },
         {
           "name": "UESIO_DB_PORT",
           "value": "5432"
@@ -117,15 +118,10 @@
   "taskRoleArn": "arn:aws:iam::460657680679:role/tcm-uesio-prod-ecs-cluster-ECSTaskIamRole-1GBUSORAI4Z1C",
   "executionRoleArn": "arn:aws:iam::460657680679:role/tcm-uesio-prod-ecs-cluster-ECSTaskExecutionRole-1OVO34GCW60TV",
   "networkMode": "awsvpc",
-  "requiresCompatibilities": [
-    "FARGATE"
-  ],
+  "requiresCompatibilities": ["FARGATE"],
   "cpu": "512",
   "memory": "1024",
   "placementConstraints": [],
-  "compatibilities": [
-    "EC2",
-    "FARGATE"
-  ],
+  "compatibilities": ["EC2", "FARGATE"],
   "tags": []
 }
