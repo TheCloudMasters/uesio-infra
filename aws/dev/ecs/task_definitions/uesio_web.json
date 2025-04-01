@@ -44,10 +44,6 @@
           "value": "uesio.s3"
         },
         {
-          "name": "UESIO_REDIS_PORT",
-          "value": "6379"
-        },
-        {
           "name": "UESIO_PLATFORM_BUNDLESTORE_CREDENTIALS",
           "value": "uesio/core.aws"
         },
@@ -97,9 +93,7 @@
   "taskRoleArn": "arn:aws:iam::666606836305:role/tcm-uesio-dev-ecs-cluster-ECSTaskIamRole-1P5SL84CIJW4F",
   "executionRoleArn": "arn:aws:iam::666606836305:role/tcm-uesio-dev-ecs-cluster-ECSTaskExecutionRole-1SO1H7JFEWLJR",
   "networkMode": "awsvpc",
-  "requiresCompatibilities": [
-    "FARGATE"
-  ],
+  "requiresCompatibilities": ["FARGATE"],
   "cpu": "256",
   "memory": "512"
 }

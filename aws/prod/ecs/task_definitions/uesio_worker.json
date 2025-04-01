@@ -45,10 +45,6 @@
           "value": "uesio.s3"
         },
         {
-          "name": "UESIO_REDIS_PORT",
-          "value": "6379"
-        },
-        {
           "name": "UESIO_PLATFORM_BUNDLESTORE_CREDENTIALS",
           "value": "uesio/core.aws"
         },
