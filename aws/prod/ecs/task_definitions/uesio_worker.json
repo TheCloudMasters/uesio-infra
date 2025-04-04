@@ -20,14 +20,6 @@
       "essential": true,
       "environment": [
         {
-          "name": "UESIO_BUNDLE_STORE_DOMAIN",
-          "value": "ues.io"
-        },
-        {
-          "name": "UESIO_EXTERNAL_BUNDLE_STORE_BASE_URL",
-          "value": "https://studio.ues.io"
-        },
-        {
           "name": "UESIO_PRIMARY_DOMAIN",
           "value": "ues.io"
         },
@@ -36,16 +28,8 @@
           "value": "tcm-uesiobundlestore-prod"
         },
         {
-          "name": "REDIS_HOST",
-          "value": "redis-cluster.ues.io"
-        },
-        {
           "name": "UESIO_REDIS_HOST",
           "value": "redis-cluster.ues.io"
-        },
-        {
-          "name": "UESIO_DB_PORT",
-          "value": "5432"
         },
         {
           "name": "UESIO_SESSION_STORE",
@@ -60,20 +44,8 @@
           "value": "postgresio"
         },
         {
-          "name": "UESIO_CACHE_SITE_BUNDLES",
-          "value": "true"
-        },
-        {
           "name": "UESIO_PLATFORM_BUNDLESTORE_TYPE",
           "value": "uesio.s3"
-        },
-        {
-          "name": "REDIS_PORT",
-          "value": "6379"
-        },
-        {
-          "name": "UESIO_REDIS_PORT",
-          "value": "6379"
         },
         {
           "name": "UESIO_PLATFORM_BUNDLESTORE_CREDENTIALS",
@@ -86,10 +58,6 @@
         {
           "name": "UESIO_USERFILES_BUCKET_NAME",
           "value": "tcm-uesiofiles-prod"
-        },
-        {
-          "name": "UESIO_PLATFORM_DATASOURCE_CREDENTIALS",
-          "value": "uesio/core.db"
         },
         {
           "name": "UESIO_PLATFORM_FILESOURCE_TYPE",
