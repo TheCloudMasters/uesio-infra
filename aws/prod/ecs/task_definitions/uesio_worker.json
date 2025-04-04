@@ -24,15 +24,19 @@
           "value": "ues.io"
         },
         {
-          "name": "UESIO_BUNDLES_BUCKET_NAME",
-          "value": "tcm-uesiobundlestore-prod"
-        },
-        {
           "name": "UESIO_REDIS_HOST",
           "value": "redis-cluster.ues.io"
         },
         {
           "name": "UESIO_SESSION_STORE",
+          "value": "redis"
+        },
+        {
+          "name": "UESIO_PLATFORM_CACHE",
+          "value": "redis"
+        },
+        {
+          "name": "UESIO_USAGE_HANDLER",
           "value": "redis"
         },
         {
@@ -44,6 +48,10 @@
           "value": "postgresio"
         },
         {
+          "name": "UESIO_DB_HOST",
+          "value": "write.ues.io"
+        },
+        {
           "name": "UESIO_PLATFORM_BUNDLESTORE_TYPE",
           "value": "uesio.s3"
         },
@@ -52,20 +60,20 @@
           "value": "uesio/core.aws"
         },
         {
-          "name": "UESIO_PLATFORM_FILESOURCE_CREDENTIALS",
-          "value": "uesio/core.aws"
-        },
-        {
-          "name": "UESIO_USERFILES_BUCKET_NAME",
-          "value": "tcm-uesiofiles-prod"
+          "name": "UESIO_BUNDLES_BUCKET_NAME",
+          "value": "tcm-uesiobundlestore-prod"
         },
         {
           "name": "UESIO_PLATFORM_FILESOURCE_TYPE",
           "value": "uesio.s3"
         },
         {
-          "name": "UESIO_DB_HOST",
-          "value": "write.ues.io"
+          "name": "UESIO_PLATFORM_FILESOURCE_CREDENTIALS",
+          "value": "uesio/core.aws"
+        },
+        {
+          "name": "UESIO_USERFILES_BUCKET_NAME",
+          "value": "tcm-uesiofiles-prod"
         }
       ],
       "secrets": [
