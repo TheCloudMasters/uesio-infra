@@ -48,6 +48,10 @@
           "value": "write.ues.io"
         },
         {
+          "name": "UESIO_DB_SSLMODE",
+          "value": "require"
+        },
+        {
           "name": "UESIO_PLATFORM_BUNDLESTORE_TYPE",
           "value": "uesio.s3"
         },
