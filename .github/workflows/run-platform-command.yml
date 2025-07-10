@@ -45,14 +45,15 @@ jobs:
         with:
           cluster: ${{ secrets.ECS_CLUSTER }}
           task-definition: uesio_worker
-          #subnet-ids: |
-          #  subnet-0bbe0ce0cd49f3cf5
           subnet-ids: |
-            ${{ vars.ECS_SN_ID }}
-          security-group-ids: |
-            ${{ vars.ECS_SG_ID }}
+            subnet-0bbe0ce0cd49f3cf5
+            subnet-0d9cbac1e23d41596
+          #subnet-ids: |
+          #  ${{ vars.ECS_SN_ID }}
           #security-group-ids: |
-          #  sg-0bb1caf92dfc04798          
+          #  ${{ vars.ECS_SG_ID }}
+          security-group-ids: |
+            sg-0bb1caf92dfc04798          
           override-container: uesio_worker
           override-container-command: |
             /bin/sh
