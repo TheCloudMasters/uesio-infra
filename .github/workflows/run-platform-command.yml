@@ -54,10 +54,4 @@ jobs:
             ./uesio
             ${{ inputs.command }}
             ${{ inputs.command_args }}
-        # uses: zamarawka/aws-run-fargate-task@v1
-        # with:
-        #   task_name: uesio_worker
-        #   cluster: ${{ secrets.ECS_CLUSTER }}
-        #   wait: true
-        #   timeout: 600
-        #   command: "./uesio, migrate"
+
