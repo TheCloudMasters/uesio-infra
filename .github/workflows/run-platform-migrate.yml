@@ -1,19 +1,10 @@
 name: Run Platform Migrate
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       environment:
         type: string
-        required: true
-    secrets:
-      AWS_ECS_ROLE_ARN:
-        required: true
-      AWS_REGION:
-        required: true
-      ECS_CLUSTER:
-        required: true
-      ECS_SERVICE:
         required: true
 
 # Request permissions to be able to access the Github OIDC JWT,
