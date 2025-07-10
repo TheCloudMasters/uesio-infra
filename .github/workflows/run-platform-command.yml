@@ -52,6 +52,5 @@ jobs:
           override-container: uesio_worker
           override-container-command: |
             ./uesio
-            ${{ inputs.command }}
-            ${{ inputs.command_args }}
+            ${{ inputs.command }} ${{ inputs.command_args }}
 
