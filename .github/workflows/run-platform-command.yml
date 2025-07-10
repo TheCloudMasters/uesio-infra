@@ -45,8 +45,10 @@ jobs:
         with:
           cluster: ${{ secrets.ECS_CLUSTER }}
           task-definition: uesio_worker
+          #subnet-ids: |
+          #  subnet-0bbe0ce0cd49f3cf5
           subnet-ids: |
-            subnet-0bbe0ce0cd49f3cf5
+            ${{ vars.ECS_SN_ID }}
           security-group-ids: |
             ${{ vars.ECS_SG_ID }}
           #security-group-ids: |
