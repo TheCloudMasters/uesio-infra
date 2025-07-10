@@ -4,8 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        type: string
+        description: "Target environment"
+        type: choice
         required: true
+        default: dev
+        options:
+          - dev
+          - prod
 
 # Request permissions to be able to access the Github OIDC JWT,
 # which is needed for AWS actions.
