@@ -49,7 +49,7 @@ jobs:
             subnet-0bbe0ce0cd49f3cf5
           security-group-ids: |
             sg-0bb1caf92dfc04798
-          override-container: uesio_${{ inputs.command }}
+          override-container: uesio_worker
           override-container-command: |
             ./uesio
             ${{ inputs.command }}
