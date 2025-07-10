@@ -18,8 +18,16 @@ To update the Prod environment (https://studio.ues.io), the corresponding ECS Ta
 
 To promote what's in dev to prod, run this Github Workflow:
 
-- [Promote DEV Docker image to PROD](../../actions/workflows/update-environment-image.yml)
+- [Promote DEV Docker image to PROD](.github/workflows/update-environment-image.yml)
 
 ### Manual deployments
 
 If for some reason you need to re-initiate a deployment, simply run the "Manual Deploy to AWS" Github Action, and select the desired environment.
+
+### Running a platform command ad-hoc
+
+The [Run Platform Command](.github/workflows/run-platform-command.yml) supports running a platform command (e.g., migrate, seed) in a one-off manner. This can be helpful for setting up a new environment and/or running database migrations.  To use:
+
+1. Choose a target environment
+2. Choose a command to execute
+3. Provide any additional command arguments (e.g., to migrate down 1 version specify `down 1`)
