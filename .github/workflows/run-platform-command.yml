@@ -40,7 +40,7 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ECS_ROLE_ARN }}
           role-session-name: gh_platform_command_${{ inputs.command }}
           aws-region: ${{ secrets.AWS_REGION }}    
-      - name: Run migrate
+      - name: Run ${{ inputs.command }}
         uses: geekcell/github-action-aws-ecs-run-task@v5
         with:
           cluster: ${{ secrets.ECS_CLUSTER }}
