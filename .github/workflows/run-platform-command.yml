@@ -1,4 +1,4 @@
-name: Run Platform Migrate
+name: Run Platform Command
 
 on:
   workflow_dispatch:
