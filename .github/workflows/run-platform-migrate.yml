@@ -1,0 +1,43 @@
+name: Run Platform Migrate
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        required: true
+    secrets:
+      AWS_ECS_ROLE_ARN:
+        required: true
+      AWS_REGION:
+        required: true
+      ECS_CLUSTER:
+        required: true
+      ECS_SERVICE:
+        required: true
+
+# Request permissions to be able to access the Github OIDC JWT,
+# which is needed for AWS actions.
+permissions:
+  id-token: write   # This is required for requesting a JWT
+
+jobs:
+  migrate:
+    name: Execute migrations
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: ${{ secrets.AWS_ECS_ROLE_ARN }}
+          role-session-name: ecsdeploy
+          aws-region: ${{ secrets.AWS_REGION }}    
+      - name: Run migrate
+        uses: zamarawka/aws-run-fargate-task@v1
+        with:
+          task_name: uesio_worker
+          cluster: ${{ secrets.ECS_CLUSTER }}
+          wait: true
+          timeout: 600
+          command: "./uesio, migrate"
