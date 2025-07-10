@@ -47,7 +47,9 @@ jobs:
           task-definition: uesio_worker
           subnet-ids: |
             subnet-0bbe0ce0cd49f3cf5
-          security-group-ids: ${{ secrets.ECS_SG_ID}}
+          #security-group-ids: ${{ secrets.ECS_SG_ID}}
+          security-group-ids: |
+            sg-0bb1caf92dfc04798          
           override-container: uesio_worker
           override-container-command: |
             /bin/sh
