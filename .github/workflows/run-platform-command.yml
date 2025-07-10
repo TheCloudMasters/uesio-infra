@@ -1,4 +1,4 @@
-name: Run Platform Migrate
+name: Run Platform Command
 
 on:
   workflow_dispatch:
@@ -11,6 +11,17 @@ on:
         options:
           - dev
           - prod
+      command:
+        description: "Command"
+        type: choice
+        required: true
+        default: migrate
+        options:
+          - migrate
+          - seed
+      command_args:
+        description: "Command arguments (optional)"
+        type: string
 
 # Request permissions to be able to access the Github OIDC JWT,
 # which is needed for AWS actions.
@@ -27,13 +38,20 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: ${{ secrets.AWS_ECS_ROLE_ARN }}
-          role-session-name: ecsdeploy
+          role-session-name: ecsmigratedb
           aws-region: ${{ secrets.AWS_REGION }}    
       - name: Run migrate
-        uses: zamarawka/aws-run-fargate-task@v1
+        uses: geekcell/github-action-aws-ecs-run-task@v5
         with:
-          task_name: uesio_worker
           cluster: ${{ secrets.ECS_CLUSTER }}
-          wait: true
-          timeout: 600
-          command: "./uesio, migrate"
+          task-definition: uesio_worker
+          subnet-ids: |
+            subnet-0bbe0ce0cd49f3cf5
+          security-group-ids: |
+            sg-0bb1caf92dfc04798
+          override-container: uesio_worker
+          override-container-command: |
+            ./uesio
+            ${{ inputs.command }}
+            ${{ inputs.command_args }}
+
