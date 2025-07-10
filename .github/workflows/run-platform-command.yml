@@ -35,10 +35,10 @@ jobs:
     environment: ${{ inputs.environment }}
     steps:
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_ECS_ROLE_ARN }}
-          role-session-name: ecsmigratedb
+          role-session-name: gh_platform_command_${{ inputs.command }}
           aws-region: ${{ secrets.AWS_REGION }}    
       - name: Run migrate
         uses: geekcell/github-action-aws-ecs-run-task@v5
@@ -51,6 +51,7 @@ jobs:
             sg-0bb1caf92dfc04798
           override-container: uesio_worker
           override-container-command: |
-            ./uesio
-            ${{ inputs.command }} ${{ inputs.command_args }}
+            /bin/sh
+            -c
+            ./uesio ${{ inputs.command }} ${{ inputs.command_args }}
 
