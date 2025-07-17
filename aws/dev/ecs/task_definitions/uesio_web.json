@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "uesio_app",
-      "image": "666606836305.dkr.ecr.us-east-1.amazonaws.com/uesio:1d423fb85f986b4fe5965742fd8efa9bbd91e1dc.1301.1",
+      "image": "666606836305.dkr.ecr.us-east-1.amazonaws.com/uesio:307e34cbde1bf3310b3087f1cb73d18bb83c415c.1310.1",
       "cpu": 256,
       "memory": 512,
       "portMappings": [
