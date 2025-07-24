@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "uesio_app",
-      "image": "666606836305.dkr.ecr.us-east-1.amazonaws.com/uesio:77575e7c3431a2f9e9dcfc5dd6b4b3ca49644193.1379.1",
+      "image": "666606836305.dkr.ecr.us-east-1.amazonaws.com/uesio:05e2382bc902b02120c86fab974592eed8c04320.1381.1",
       "cpu": 256,
       "memory": 512,
       "portMappings": [
@@ -99,7 +99,7 @@
         "timeout": 10,
         "retries": 5,
         "startPeriod": 10
-      },      
+      },
       "mountPoints": [],
       "volumesFrom": [],
       "logConfiguration": {
