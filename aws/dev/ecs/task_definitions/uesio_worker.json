@@ -89,7 +89,7 @@
       "healthCheck": {
         "command": [
           "CMD-SHELL",
-          "(echo 'Running healthcheck' && test -f /tmp/worker-healthcheck.json && test $(( $(date +%s) - $(stat -c %Y /tmp/worker-healthcheck.json) )) -lt 60) >> /proc/1/fd/1 2>&1"
+          "test -f /tmp/worker-healthcheck.json && test $(( $(date +%s) - $(stat -c %Y /tmp/worker-healthcheck.json) )) -lt 60"
         ],
         "interval": 5,
         "timeout": 5,

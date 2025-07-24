@@ -93,7 +93,7 @@
       "healthCheck": {
         "command": [
           "CMD-SHELL",
-          "(echo 'Running Healthcheck' && wget -q --no-check-certificate --spider http://localhost:3000/health || exit 1) >> /proc/1/fd/1 2>&1"
+          "wget -q --no-check-certificate --spider http://localhost:3000/health || exit 1"
         ],
         "interval": 5,
         "timeout": 5,
