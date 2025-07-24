@@ -90,6 +90,16 @@
           "valueFrom": "arn:aws:secretsmanager:us-east-1:666606836305:secret:uesio-web/env/secrets-4Zg9nY:resend_api_key::"
         }
       ],
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "wget -q --no-check-certificate $(if [ \"$UESIO_USE_HTTPS\" = \"true\" ]; then echo \"https\"; else echo \"http\"; fi)://localhost:$UESIO_PORT/health || exit 1"
+        ],
+        "interval": 5,
+        "timeout": 10,
+        "retries": 5,
+        "startPeriod": 10
+      },      
       "mountPoints": [],
       "volumesFrom": [],
       "logConfiguration": {
