@@ -90,6 +90,16 @@
           "valueFrom": "arn:aws:secretsmanager:us-east-1:460657680679:secret:/uesio-web/env/secrets-rJBtdy:resend_api_key::"
         }
       ],
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "wget -q --no-check-certificate --spider http://localhost:3000/health || exit 1"
+        ],
+        "interval": 5,
+        "timeout": 5,
+        "retries": 10,
+        "startPeriod": 60
+      },      
       "mountPoints": [],
       "volumesFrom": [],
       "logConfiguration": {
