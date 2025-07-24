@@ -89,7 +89,7 @@
       "healthCheck": {
         "command": [
           "CMD-SHELL",
-          "echo 'Running Healthcheck - test' >> /proc/1/fd/1 2>&1"
+          "(echo 'Running Healthcheck - test' && echo 'Another healthcheck msg') >> /proc/1/fd/1 2>&1"
         ],
         "interval": 5,
         "timeout": 5,
