@@ -93,7 +93,7 @@
       "healthCheck": {
         "command": [
           "CMD-SHELL",
-          "wget -q --no-check-certificate $(if [ \"$UESIO_USE_HTTPS\" = \"true\" ]; then echo \"https\"; else echo \"http\"; fi)://localhost:$UESIO_PORT/health || exit 1"
+          "wget -q --no-check-certificate http://localhost:3000/health || exit 1"
         ],
         "interval": 5,
         "timeout": 10,
