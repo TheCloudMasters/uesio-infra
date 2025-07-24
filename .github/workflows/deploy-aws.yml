@@ -44,7 +44,7 @@ jobs:
           role-session-name: ecsdeploy
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Deploy ECS task definition - worker
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1.6.0
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
           wait-for-minutes: 5
           task-definition: ${{ env.workerTaskDefinitionFile }}
@@ -52,7 +52,7 @@ jobs:
           cluster: ${{ secrets.ECS_CLUSTER }}
           wait-for-service-stability: true
       - name: Deploy ECS task definition - app
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1.6.0
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
           codedeploy-appspec: ${{ env.appSpecFile }}
           codedeploy-application: tcm-uesio-${{ inputs.environment }}-uesio-${{ inputs.environment }}
