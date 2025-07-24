@@ -86,6 +86,16 @@
           "valueFrom": "arn:aws:secretsmanager:us-east-1:666606836305:secret:/rds/aurora/tcm-uesio-dev-aurora-1xtDNl:password::"
         }
       ],
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+           "test -f /tmp/worker-healthcheck.json && test $(( $(date +%s) - $(stat -c %Y /tmp/worker-healthcheck.json) )) -lt 60 >> /proc/1/fd/1 2>&1"
+        ],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 60
+      },
       "mountPoints": [],
       "volumesFrom": [],
       "logConfiguration": {
