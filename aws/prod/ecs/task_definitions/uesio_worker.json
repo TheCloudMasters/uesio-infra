@@ -95,7 +95,7 @@
         "timeout": 5,
         "retries": 10,
         "startPeriod": 60
-      },      
+      },
       "mountPoints": [],
       "volumesFrom": [],
       "logConfiguration": {
@@ -117,9 +117,5 @@
   "cpu": "512",
   "memory": "1024",
   "placementConstraints": [],
-  "compatibilities": [
-    "EC2",
-    "FARGATE"
-  ],
   "tags": []
 }

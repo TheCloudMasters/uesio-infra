@@ -119,5 +119,7 @@
     "FARGATE"
   ],
   "cpu": "256",
-  "memory": "512"
+  "memory": "512",
+  "placementConstraints": [],
+  "tags": []
 }
