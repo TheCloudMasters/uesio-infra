@@ -1,0 +1,23 @@
+# This workflow is a placeholder to support rulesets. In order to enable the "Require branches to be up to date before merging" setting in a ruleset, you must 
+# have at least one required status check. In order to satisfy that requirement, this workflow exists with a single job that we can status check against. This 
+# workflow does nothing other than echo "Hello!" Although we could likely add validations to our taskdefs, etc. as part of a "CI" workflow, there isn't a lot of 
+# value as they will fail to deploy anyway. Possibly in future but for now, we just need something to satisfy the ruleset requirement of having at least one status 
+# check.
+name: Status Check Placeholder
+on:
+  merge_group:
+  pull_request:
+    branches: [main]
+
+# Automatically cancel in-progress actions on the same branch except for main
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request_target' && github.head_ref || github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  status_check_placeholder:
+    name: Placeholder to support rulesets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo hello
+        run: echo "Hello!"
