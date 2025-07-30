@@ -29,3 +29,7 @@ git config --global user.email "$gitEmail"
 git add $targetAppTaskPath $targetWorkerTaskPath
 git commit -m "release: Promote $sourceEnv image to $targetEnv"
 git push
+
+# Get the SHA of the commit
+commitSHA=$(git rev-parse HEAD)
+echo "COMMIT_SHA=${$commitSHA}" >> "$GITHUB_OUTPUT"
