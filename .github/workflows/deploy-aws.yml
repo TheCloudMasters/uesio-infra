@@ -6,6 +6,14 @@ on:
       environment:
         type: string
         required: true
+      target_ref:
+        # The branch, tag or SHA to checkout. When checking out the repository that
+        # triggered a workflow, this defaults to the reference or SHA for that event.
+        # Otherwise, uses the default branch. This should normally be left blank when
+        # this workflow is called from another workflow that was triggered by a 
+        # workflow_dispatch event.
+        description: 'The ref (branch, tag, or SHA) to use. Defaults to ref that triggered the workflow.'
+        type: string        
     secrets:
       AWS_ECS_ROLE_ARN:
         required: true
@@ -34,6 +42,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # When called by update-environment_image, this will have the value of the commit that was added
+          # in that workflow. In other scenarios, this should almost always be blank so that it uses the SHA
+          # from the even that triggered the workflow which called this workflow (e.g., a workflow_dispatch
+          # event that doesn't involve a commit in a prior step).
+          ref: ${{ inputs.target_ref }}
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
