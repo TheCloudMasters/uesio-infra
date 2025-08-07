@@ -23,6 +23,8 @@ jobs:
     name: "Update Docker image"
     runs-on: ubuntu-latest
     environment: ${{ inputs.sourceEnv }}
+    outputs:
+      commit_sha: ${{ steps.update-task-defs.outputs.commit_sha }}
     steps:
       - name: Create App Token for GitHub App
         uses: actions/create-github-app-token@v2
@@ -39,7 +41,8 @@ jobs:
         with:
           token: ${{ steps.app-token.outputs.token }}
           fetch-depth: 0
-      - name: Update Docker image
+      - name: Update Task Definitions
+        id: update-task-defs
         env:
           sourceEnv: ${{ inputs.sourceEnv }}
           targetEnv: ${{ inputs.targetEnv }}
