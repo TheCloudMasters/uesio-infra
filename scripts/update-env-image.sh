@@ -27,7 +27,13 @@ git config --global user.name "$gitUsername"
 git config --global user.email "$gitEmail"
 
 git add $targetAppTaskPath $targetWorkerTaskPath
-git commit -m "release: Promote $sourceEnv image to $targetEnv"
+# We're updating task definitions with a push from a GitHub App vs. GITHUB_TOKEN. Pushes made
+# by GITHUB_TOKEN do not trigger new workflows to prevent infinite loops. However, since we
+# are using the Github App Token to bypass rulesets, the push will trigger other workflows.
+# Since we are deploying to target environment in the next job of the workflow, we include
+# the [skip actions] tag to prevent the automatic deployment workflow from running on push to
+# main.
+git commit -m "release: Promote $sourceEnv image to $targetEnv [skip actions]"
 git push
 
 # Get the SHA of the commit
