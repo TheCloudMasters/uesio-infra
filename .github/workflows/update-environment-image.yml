@@ -32,8 +32,8 @@ jobs:
           # to update taskdefs as the GitHub App which is configured to bypass the rulesets.
           # The "Update Image" GitHub App must be installed on the TheCloudMasters org and have permissions to write to the
           # TheCloudMasters/uesio-infra repo.
-          app-id: ${{ vars.APP_ID }}
-          private-key: ${{ secrets.PRIVATE_KEY }}
+          app-id: ${{ vars.UPDATE_IMAGE_APP_ID }}
+          private-key: ${{ secrets.UPDATE_IMAGE_PRIVATE_KEY }}
       - name: Checkout
         uses: actions/checkout@v4
         with:
